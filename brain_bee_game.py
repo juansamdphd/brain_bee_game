@@ -31,7 +31,7 @@ def main():
         elif question == 'exit':
             break
         elif not question_list:
-            print("That's all we have! Make sure to check BrainBeez again for more content.\nBrainBeez will be in constatn/regular development, so keep an eye out for future features and more questions!")
+            print("That's all we have! Make sure to check BrainBeez again for more content.\nBrainBeez will be in constant/regular development, so keep an eye out for future features and more questions!")
     # print farewell message
     print("")
     print("Thanks for playing Brainbeez!\n")
