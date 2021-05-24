@@ -14,7 +14,7 @@ import random
 
 def main():
     # print welcoming message
-    print("Welcome to Brainbeez! A text-based game to practice you neuroscience knowledge")
+    print("Welcome to Brainbeez! A text-based game to practice your neuroscience knowledge")
     # get user answer on what topic to review
     topic = get_user_topic()
     print("You've chosen", topic + ".\n" +  "To change topic, just type 'topic' as your answer to any of the questions.\nType 'exit' to leave.")
