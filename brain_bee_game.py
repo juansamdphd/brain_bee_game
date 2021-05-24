@@ -10,6 +10,11 @@ License; GPL.
 """
 
 import csv
+# import urllib 
+# from urllib.request import urlopen
+
+# url = "https://raw.githubusercontent.com/juansamdphd/brain_bee_game/main/brainbeez_questions.csv"
+# BANK = urllib.request.urlopen(url)
 
 def main():
     # print welcoming message
@@ -50,8 +55,8 @@ def get_user_topic():
             return topic
 
 def ask_question(topic):
-    with open("brainbeez_questions.csv") as file:
-        question_bank = csv.DictReader(file)
+    with open("brainbeez_questions.txt") as file:
+        question_bank = csv.DictReader(file, delimiter='\t')
         for line in question_bank:
             if line['topic'] == topic:
                 question = input(line['question'] + " (hit enter to evaluate the answer): ")
