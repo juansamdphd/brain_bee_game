@@ -51,10 +51,14 @@ def get_user_topic():
 
 def ask_question(topic):
     with open("brainbeez_questions.csv") as file:
-        questions = csv.DictReader(file)
-        for line in questions:
+        question_bank = csv.DictReader(file)
+        for line in question_bank:
             if line['topic'] == topic:
-                print(line['question'])
+                question = input(line['question'] + ": ")
+                if question == line['answer']:
+                    print("Yes! This is the correct answer!")
+                else:
+                    print("Incorrect answer. The answer is", line['answer'])
 
 
     
