@@ -4,7 +4,7 @@ Text-based game that presents neuroscience questions to
 an user to practice and improve their neuroscience knowledge,
 especially as the user prepares to a Brain Bee Competition
 
-Author: Juan C. Sanchez-Arias.
+Author: Juan C. Sanchez-Arias. (https://www.github.com/juansamdphd/brain_bee_game/)
 First version: 2021.
 License; GPL.
 """
