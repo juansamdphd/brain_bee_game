@@ -36,8 +36,9 @@ def main():
     print("Come back to practice some more any time you want\n")
 
 def get_user_topic():
+    # gets user topic to practice
     topic = int(input("What do you want to practice or learn about today?\n1. History of Neuroscience\n2. Neuroanatomy\n3. Neurobiology\n4. Clinical neuroscience\n\nEnter your answer (just type the corresponding number or 0 to exit): "))
-    while True:
+    while True: # as topics get added this value can change
         if topic > 4:
             topic = int(input("Invalid numner. Enter a valid number to select a topic or 0 to exit: "))
         if topic == 1:
@@ -61,25 +62,26 @@ def get_user_topic():
             return topic
 
 def ask_question(topic):
+    # opens text file with questions from a tab delimited file
     with open("brainbeez_questions.txt") as file:
-        question_bank = csv.DictReader(file, delimiter='\t')
+        question_bank = csv.DictReader(file, delimiter='\t') # uses csv.DictReader to make first line as headers and defines the delimiter as tab
         get_question = get_topic_question_list(question_bank, topic)
         question = input(get_question['question'] + " (hit enter to evaluate the answer): ")
-        if question.lower() == get_question['answer'].lower():
+        if question.lower() == get_question['answer'].lower(): # compared as lower in case there is mix of upper and lower case
             print("")
             print("Yes! This is the correct answer!\n")
-        elif question.lower() == 'topic' or question.lower() == 'exit':
+        elif question.lower() == 'topic' or question.lower() == 'exit': # adds option to exit or change topic of practice
             return question
         else:
             print("")
             print("Incorrect answer. The answer is", get_question['answer'],"\n")
 
 def get_topic_question_list(question_bank, topic):
-    question_list = []
+    question_list = [] # creates an empty to append available quesitons which topic matches the one selected by the user.
     for line in question_bank:
         if line['topic'] == topic:
-            question_list.append(line)
-    get_question = random.choice(question_list)
+            question_list.append(line) # appends questions to list
+    get_question = random.choice(question_list) # from the random library gets a random item from the list
     return get_question
 
     
