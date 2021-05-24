@@ -31,7 +31,7 @@ def main():
         elif question == 'exit':
             break
         elif not question_list:
-            print("That's all we have! Make sure to check us out again for more content.\nWe will be expanding our the program function and question bank")
+            print("That's all we have! Make sure to check BrainBeez again for more content.\nBrainBeez will be in constatn/regular development, so keep an eye out for future features and more questions!")
     # print farewell message
     print("")
     print("Thanks for playing Brainbeez!\n")
@@ -70,27 +70,24 @@ def get_questions(topic):
         question_bank = csv.DictReader(file, delimiter='\t') # uses csv.DictReader to make first line as headers and defines the delimiter as tab
         # Get list of questions
         question_list = get_topic_question_list(question_bank, topic)
-        # Get a question from question list
-        # question = get_question(question_list)
     return question_list
-        # while question_list:
-        #     question = question_list.pop(random.randrange(len(question_list)))
 
 def get_topic_question_list(question_bank, topic):
-    question_list = [] # creates an empty to append available quesitons which topic matches the one selected by the user.
-    for line in question_bank:
+    # creates an empty ist to append available quesitons which topic matches the one selected by the user.
+    question_list = [] 
+    for line in question_bank: # evaluates each line from question_bank
+        # if the question topic matches the topic selected by the user, appends the question (a dictionary) to question_list
         if line['topic'] == topic:
-            question_list.append(line) # appends questions to list
+            question_list.append(line)
     return question_list
 
 def ask_question(question_list):
-    # sample_list = random.sample(question_list, len(question_list)) # from the random library gets a random item from question_list
+    # gets a random uestion from question_list and pops it out of the list, returns que the popped question as per pop()
     question = question_list.pop(random.randrange(len(question_list)))
-    # return question
     # Ask question to user and record answer
     user_answer = input(question['question'] + " (hit enter to evaluate the answer): ")
     # Compare user_answer with question answer
-    if user_answer.lower() == question['answer'].lower(): # compared as lower in case there is mix of upper and lower case
+    if user_answer.lower() == question['answer'].lower(): # compared as lowercase in case there is mix of upper and lower case
         print("")
         print("Yes! This is the correct answer!\n")
     elif user_answer.lower() == 'topic' or user_answer.lower() == 'exit': # adds option to exit or change topic of practice
