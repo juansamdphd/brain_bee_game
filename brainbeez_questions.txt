@@ -1,5 +1,10 @@
 question	answer	topic	contributor
 Who is considered the father of modern neuroscience?	Santiago Ramon y Cajal	history	juansanar
+Who coined the concept of motor units for the first time?	Charles Scott Sherrington	history	juansanar
+Who is was the famous individual who developed prefrontal and executive function issues after a rod pierce the brain?	Phineas Gage	history	juansanar
+Which was the very first neurotransmitter to be discovered?	Acethylcoline	history	juansanar
 What is the main excitatory neurotransmitter in the nervous system?	Glutamate	neurobiology	juansanar
+What is the main inhbitory neurotransmitter in the nervous system?	GABA	neurobiology	juansanar
+What is the main neurotransmitter involved in the reward system?	Dopamine	neurobiology	juansanar
 What is the brain structure in charge of processing memories?	Hippocampus	neuroanatomy	juansanar
 What is the main structure compromised in Huntington's disease?	Striatum	clinical	juansanar
