@@ -20,8 +20,9 @@ def main():
     print("You've chosen", topic + ".\n" +  "To change topic, just type 'topic' as your answer to any of the questions.\nType 'exit' to leave.")
     print("")
     # print question from selected topic
-    while True:
-        question = ask_question(topic)
+    question_list = get_questions(topic)
+    while question_list:
+        question = ask_question(question_list)
         if question == 'topic':
             print("")
             topic = get_user_topic()
@@ -29,6 +30,8 @@ def main():
             print("")
         elif question == 'exit':
             break
+        elif not question_list:
+            print("That's all we have! Make sure to check us out again for more content.\nWe will be expanding our the program function and question bank")
     # print farewell message
     print("")
     print("Thanks for playing Brainbeez!\n")
@@ -61,29 +64,40 @@ def get_user_topic():
             topic = "to exit"
             return topic
 
-def ask_question(topic):
+def get_questions(topic):
     # opens text file with questions from a tab delimited file
     with open("brainbeez_questions.txt") as file:
         question_bank = csv.DictReader(file, delimiter='\t') # uses csv.DictReader to make first line as headers and defines the delimiter as tab
-        get_question = get_topic_question_list(question_bank, topic)
-        question = input(get_question['question'] + " (hit enter to evaluate the answer): ")
-        if question.lower() == get_question['answer'].lower(): # compared as lower in case there is mix of upper and lower case
-            print("")
-            print("Yes! This is the correct answer!\n")
-        elif question.lower() == 'topic' or question.lower() == 'exit': # adds option to exit or change topic of practice
-            return question
-        else:
-            print("")
-            print("Incorrect answer. The answer is", get_question['answer'],"\n")
+        # Get list of questions
+        question_list = get_topic_question_list(question_bank, topic)
+        # Get a question from question list
+        # question = get_question(question_list)
+    return question_list
+        # while question_list:
+        #     question = question_list.pop(random.randrange(len(question_list)))
 
 def get_topic_question_list(question_bank, topic):
     question_list = [] # creates an empty to append available quesitons which topic matches the one selected by the user.
     for line in question_bank:
         if line['topic'] == topic:
             question_list.append(line) # appends questions to list
-    get_question = random.choice(question_list) # from the random library gets a random item from the list
-    return get_question
+    return question_list
 
+def ask_question(question_list):
+    # sample_list = random.sample(question_list, len(question_list)) # from the random library gets a random item from question_list
+    question = question_list.pop(random.randrange(len(question_list)))
+    # return question
+    # Ask question to user and record answer
+    user_answer = input(question['question'] + " (hit enter to evaluate the answer): ")
+    # Compare user_answer with question answer
+    if user_answer.lower() == question['answer'].lower(): # compared as lower in case there is mix of upper and lower case
+        print("")
+        print("Yes! This is the correct answer!\n")
+    elif user_answer.lower() == 'topic' or user_answer.lower() == 'exit': # adds option to exit or change topic of practice
+        return user_answer
+    else:
+        print("")
+        print("Incorrect answer. The answer is", question['answer'],"\n")
     
 if __name__ == "__main__":
     main()
