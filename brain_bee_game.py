@@ -54,8 +54,8 @@ def ask_question(topic):
         question_bank = csv.DictReader(file)
         for line in question_bank:
             if line['topic'] == topic:
-                question = input(line['question'] + ": ")
-                if question == line['answer']:
+                question = input(line['question'] + " (hit enter to evaluate the answer): ")
+                if question.lower() == line['answer'].lower():
                     print("Yes! This is the correct answer!")
                 else:
                     print("Incorrect answer. The answer is", line['answer'])
